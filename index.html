@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>x3nt1s &mdash; Works</title>
+<meta name="description" content="x3nt1s — homebrew projects. Currently working on PS2NetSA, San Andreas Netplay for the PlayStation 2.">
+<style>
+@font-face {
+  font-family: 'Bungee Layers';
+  src: url('./bungee.layers-regular-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #07070a;
+  --bg-soft: #0e0f14;
+  --fg: #eceff4;
+  --muted: #8a90a0;
+  --accent: #2ee6c5;
+  --accent-2: #7a5cff;
+  --line: #1e2130;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1100px 620px at 12% -10%, rgba(122, 92, 255, 0.20), transparent 60%),
+    radial-gradient(900px 520px at 92% 0%, rgba(46, 230, 197, 0.14), transparent 62%),
+    var(--bg);
+  color: var(--fg);
+  font-family: 'Bungee Layers', 'Impact', 'Haettenschweiler', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.022) 0 1px,
+    transparent 1px 3px
+  );
+  z-index: 2;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+header.top {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+header.top::before {
+  content: '';
+  position: absolute;
+  inset: 0 -24px;
+  z-index: -1;
+  background: rgba(7, 7, 10, 0.88);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+header.top > :first-child { justify-self: start; }
+header.top > :last-child { justify-self: end; }
+
+.brand {
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.brand span { color: var(--accent); }
+
+.navbtn {
+  justify-self: center;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.03);
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.navbtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(46, 230, 197, 0.08);
+  box-shadow: 0 0 20px -6px rgba(46, 230, 197, 0.75);
+}
+
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero {
+  padding: 84px 0 64px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(56px, 13vw, 168px);
+  line-height: 0.92;
+  margin: 0;
+  background: linear-gradient(180deg, #ffffff 12%, var(--accent) 58%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 26px rgba(46, 230, 197, 0.30));
+}
+
+.hero p {
+  max-width: 640px;
+  margin: 22px auto 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.hero p strong { color: var(--fg); font-weight: 400; }
+
+section { padding-bottom: 72px; }
+
+h2.head {
+  font-size: 15px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 34px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px;
+  background: linear-gradient(160deg, var(--bg-soft), rgba(7, 7, 10, 0.6));
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(46, 230, 197, 0.09) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.22s;
+  pointer-events: none;
+}
+
+a.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -22px rgba(46, 230, 197, 0.6);
+}
+
+a.card:hover::after { opacity: 1; }
+
+.card .label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card h3 {
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--fg);
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--muted);
+  flex: 1;
+}
+
+.card .go {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.pill {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 5px 11px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(46, 230, 197, 0.4);
+  border-radius: 999px;
+  background: rgba(46, 230, 197, 0.08);
+}
+
+.note {
+  font-size: 12px;
+  color: var(--muted);
+  border-left: 2px solid var(--accent-2);
+  padding: 4px 0 4px 16px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 0 44px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #555b6b;
+}
+
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+@media (max-width: 560px) {
+  header.top { grid-template-columns: 1fr; justify-items: center; row-gap: 14px; }
+  .hero { padding: 56px 0 44px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="brand" href="index.html">x3nt1s<span>//</span>works</a>
+    <a class="navbtn" href="contacts.html">Contacts &amp; Links</a>
+    <div class="tag">Homebrew &amp; Preservation</div>
+  </header>
+
+  <div class="hero">
+    <h1>x3nt1s</h1>
+    <p>Projects, prototypes and experiments. Everything here is made from scratch,
+       one hex at a time. <strong>Currently: PS2NetSA.</strong></p>
+  </div>
+
+  <section>
+    <h2 class="head">In the works</h2>
+    <div class="grid">
+
+      <a class="card" href="net_sa.html">
+        <span class="pill">Pre-Alpha 0.1</span>
+        <h3>PS2NetSA</h3>
+        <p>San Andreas Netplay for the PlayStation 2. Bringing GTA: San Andreas
+           online to the console that never got it.</p>
+        <span class="go">View project &rarr;</span>
+      </a>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 class="head">Status</h2>
+    <p class="note">PS2NetSA is in active development and pre-alpha. Builds are
+       experimental &mdash; expect crashes, glitches and lost progress. Feedback
+       and testers welcome.</p>
+  </section>
+
+  <footer>
+    <span>&copy; <span id="year">2026</span> x3nt1s</span>
+    <span><a href="net_sa.html">PS2NetSA</a> &nbsp;/&nbsp; Not affiliated with Rockstar Games or Sony</span>
+  </footer>
+
+</div>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

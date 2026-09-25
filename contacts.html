@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacts &amp; Links &mdash; x3nt1s</title>
+<meta name="description" content="Contact and follow x3nt1s — Rockstar Social Club, Steam, GitHub and Discord.">
+<style>
+@font-face {
+  font-family: 'Bungee Layers';
+  src: url('./bungee.layers-regular-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #06070a;
+  --bg-soft: #0d0f15;
+  --fg: #eef1f6;
+  --muted: #8b91a1;
+  --accent: #35e0ff;
+  --accent-2: #7a5cff;
+  --hot: #ff5d3b;
+  --orange: #ff9d3d;
+  --line: #1c1f2c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1000px 560px at 50% -12%, rgba(53, 224, 255, 0.16), transparent 62%),
+    radial-gradient(760px 460px at 100% 100%, rgba(122, 92, 255, 0.14), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: 'Bungee Layers', 'Impact', 'Haettenschweiler', system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 3px);
+  z-index: 3;
+}
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+a { color: var(--accent); }
+
+nav.top {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+nav.top::before {
+  content: '';
+  position: absolute;
+  inset: 0 -24px;
+  z-index: -1;
+  background: rgba(6, 7, 10, 0.88);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+nav.top > :first-child { justify-self: start; }
+nav.top > :last-child { justify-self: end; }
+
+.back {
+  display: inline-block;
+  padding: 9px 16px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.back:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(53, 224, 255, 0.07);
+}
+
+.navbtn {
+  justify-self: center;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.03);
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.navbtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(53, 224, 255, 0.08);
+  box-shadow: 0 0 20px -6px rgba(53, 224, 255, 0.75);
+}
+
+.navbtn.is-active {
+  color: var(--accent);
+  border-color: rgba(53, 224, 255, 0.45);
+  background: rgba(53, 224, 255, 0.07);
+}
+
+.tag {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero { text-align: center; padding: 76px 0 46px; }
+
+.hero h1 {
+  font-size: clamp(38px, 9vw, 96px);
+  line-height: 0.95;
+  background: linear-gradient(180deg, #ffffff 10%, var(--accent) 62%, var(--accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 30px rgba(53, 224, 255, 0.28));
+}
+
+.hero .sub {
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+section { padding-bottom: 66px; }
+
+h2.head {
+  font-size: 14px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+  margin-bottom: 30px;
+}
+
+.links { display: grid; gap: 12px; }
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 24px;
+  text-decoration: none;
+  color: inherit;
+  background: linear-gradient(160deg, var(--bg-soft), rgba(6, 7, 10, 0.55));
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+}
+
+.row:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -24px rgba(53, 224, 255, 0.8);
+}
+
+.row .rl {
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--fg);
+}
+
+.row .rv {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.row .go {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.copy {
+  font: inherit;
+  font-family: inherit;
+  display: inline-block;
+  padding: 11px 20px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(53, 224, 255, 0.07);
+  border: 1px solid rgba(53, 224, 255, 0.45);
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.copy:hover { background: rgba(53, 224, 255, 0.16); color: #fff; }
+
+.coming {
+  display: inline-block;
+  padding: 11px 20px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: linear-gradient(180deg, #e5251c, #a10d08);
+  border: 1px solid rgba(255, 93, 59, 0.6);
+  border-radius: 3px;
+  white-space: nowrap;
+  cursor: not-allowed;
+}
+
+.note {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+  border-left: 2px solid var(--accent-2);
+  padding: 4px 0 4px 16px;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 34px;
+  transform: translate(-50%, 20px);
+  padding: 12px 22px;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #04070a;
+  background: var(--accent);
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 5;
+}
+
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 26px 0 44px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #4f5566;
+}
+
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+
+@media (max-width: 620px) {
+  nav.top { grid-template-columns: 1fr; justify-items: center; row-gap: 14px; }
+  .hero { padding: 52px 0 34px; }
+  .row { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .copy, .coming { width: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="top">
+    <a class="back" href="index.html">&larr; Back to x3nt1s works</a>
+    <a class="navbtn is-active" href="contacts.html">Contacts &amp; Links</a>
+    <span class="tag">More may be added later</span>
+  </nav>
+
+  <div class="hero">
+    <h1>Contacts &amp; Links</h1>
+    <div class="sub">Where to find x3nt1s</div>
+  </div>
+
+  <section>
+    <h2 class="head">Links</h2>
+    <div class="links">
+
+      <a class="row" href="https://github.com/x3nt1s" target="_blank" rel="noopener noreferrer">
+        <span>
+          <span class="rl">Github</span>
+          <span class="rv">github.com/x3nt1s</span>
+        </span>
+        <span class="go">Open &rarr;</span>
+      </a>
+
+      <a class="row" href="https://socialclub.rockstargames.com/members/x3nt1s" target="_blank" rel="noopener noreferrer">
+        <span>
+          <span class="rl">Rockstar</span>
+          <span class="rv">socialclub.rockstargames.com/members/x3nt1s</span>
+        </span>
+        <span class="go">Open &rarr;</span>
+      </a>
+
+      <div class="row">
+        <span>
+          <span class="rl">Steam Group</span>
+          <span class="rv">The group is not up yet</span>
+        </span>
+        <span class="coming">Coming Soon</span>
+      </div>
+
+      <a class="row" href="https://steamcommunity.com/id/x3nt1s" target="_blank" rel="noopener noreferrer">
+        <span>
+          <span class="rl">Steam Profile</span>
+          <span class="rv">steamcommunity.com/id/x3nt1s</span>
+        </span>
+        <span class="go">Open &rarr;</span>
+      </a>
+
+      <div class="row">
+        <span>
+          <span class="rl">Discord Group</span>
+          <span class="rv">The server is not up yet</span>
+        </span>
+        <span class="coming">Coming Soon</span>
+      </div>
+
+      <div class="row">
+        <span>
+          <span class="rl">Personal Discord</span>
+          <span class="rv">Add me directly</span>
+        </span>
+        <button class="copy" type="button" data-copy="x3nt1s">x3nt1s &mdash; Copy</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2 class="head">Notes</h2>
+    <p class="note">Bug reports, crash logs, screenshots of things breaking and
+      general feedback are all welcome &mdash; the build is still in pre-alpha, so
+      nothing you find is wasted effort. If you can code and want to help,
+      say so on Discord.</p>
+  </section>
+
+  <footer>
+    <span>&copy; <span id="year">2026</span> x3nt1s</span>
+    <span><a href="index.html">All works</a> &nbsp;/&nbsp; Not affiliated with Rockstar Games or Sony</span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">Copied</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+var toast = document.getElementById('toast');
+var timer;
+
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var value = btn.getAttribute('data-copy');
+    var done = function () {
+      toast.textContent = value + ' copied';
+      toast.classList.add('show');
+      clearTimeout(timer);
+      timer = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value).then(done, function () {});
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = value;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      done();
+    }
+  });
+});
+</script>
+</body>
+</html>
